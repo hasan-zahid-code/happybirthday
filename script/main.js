@@ -1,4 +1,16 @@
 function createGiftBox() {
+    // Create full-screen background overlay
+    const overlay = document.createElement('div');
+    overlay.id = 'background-overlay';
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = '#f3eefb';
+    overlay.style.zIndex = '999';
+    document.body.appendChild(overlay);
+
     // Create container for the gift box
     const giftBoxContainer = document.createElement('div');
     giftBoxContainer.id = 'gift-box-container';
@@ -68,12 +80,20 @@ function createGiftBox() {
             ribbonHorizontal.style.opacity = '0';
             ribbonKnot.style.opacity = '0';
         }, 300);
-
         // After lid is open, show surprise (confetti)
         setTimeout(() => {
             // Hide the gift box
             giftBoxContainer.style.opacity = '0';
             giftBoxContainer.style.transform = 'translate(-50%, -50%) scale(0.5)';
+
+            // Fade out the background overlay
+            overlay.style.transition = 'opacity 1s ease';
+            overlay.style.opacity = '0';
+
+            // Remove the overlay after animation completes
+            setTimeout(() => {
+                overlay.remove();
+            }, 1000);
 
             // Clear existing confetti and start new batch
             createConfetti();
@@ -96,6 +116,7 @@ function createGiftBox() {
 
 
 function createConfetti() {
+
     const confettiContainer = document.getElementById('confetti-container');
     const colors = ['#bd6ecf', '#e3bae8', '#a68ad6', '#8a65cc', '#ff69b4', '#7dd175', '#347a9d'];
 
@@ -209,206 +230,58 @@ function createConfetti() {
     }, 10000); // Updated to 10 seconds
 }
 
-// Function to create and show countdown
-function showCountdown() {
-    const unlockDate = new Date("March 11, 2025 00:00:00").getTime();
-
-    // Create countdown container
-    const countdownContainer = document.createElement('div');
-    countdownContainer.id = 'countdown-container';
-    countdownContainer.style.position = 'fixed';
-    countdownContainer.style.top = '0';
-    countdownContainer.style.left = '0';
-    countdownContainer.style.width = '100%';
-    countdownContainer.style.height = '100%';
-    countdownContainer.style.display = 'flex';
-    countdownContainer.style.flexDirection = 'column';
-    countdownContainer.style.alignItems = 'center';
-    countdownContainer.style.textAlign = 'center';
-    countdownContainer.style.justifyContent = 'center';
-    countdownContainer.style.fontFamily = 'Poppins, sans-serif';
-    countdownContainer.style.zIndex = '10000';
-
-    // Create heading
-    const heading = document.createElement('h1');
-    heading.textContent = "Birthday Countdown";
-    heading.style.marginBottom = '20px';
-
-    // Create countdown timer elements
-    const timerContainer = document.createElement('div');
-    timerContainer.style.display = 'flex';
-    timerContainer.style.gap = '20px';
-    timerContainer.style.marginBottom = '30px';
-    timerContainer.style.flexWrap = 'wrap';
-    timerContainer.style.justifyContent = 'center';
-
-    const timeUnits = ['Days', 'Hours', 'Minutes', 'Seconds'];
-    const timeElements = {};
-
-    timeUnits.forEach(unit => {
-        const unitContainer = document.createElement('div');
-        unitContainer.style.display = 'flex';
-        unitContainer.style.flexDirection = 'column';
-        unitContainer.style.alignItems = 'center';
-        unitContainer.className = 'timer-unit';
-
-        const number = document.createElement('div');
-        number.id = unit.toLowerCase();
-        number.style.fontSize = '3rem';
-        number.style.fontWeight = 'bold';
-        number.textContent = '00';
-        number.className = 'number';
-
-        const label = document.createElement('div');
-        label.textContent = unit;
-        label.style.fontSize = '1rem';
-
-        unitContainer.appendChild(number);
-        unitContainer.appendChild(label);
-        timerContainer.appendChild(unitContainer);
-
-        timeElements[unit.toLowerCase()] = number;
-    });
-
-    // Create message
-    const message = document.createElement('p');
-    message.textContent = "The birthday surprise will unlock on March 11, 2025!";
-
-    // Create "Preview Anyway" button
-    const previewButton = document.createElement('button');
-    previewButton.textContent = "Preview Anyway";
-    previewButton.style.marginTop = '20px';
-    previewButton.style.padding = '10px 20px';
-    previewButton.style.backgroundColor = '#8a65cc';
-    previewButton.style.color = 'white';
-    previewButton.style.border = 'none';
-    previewButton.style.borderRadius = '30px';
-    previewButton.style.cursor = 'pointer';
-    previewButton.style.fontFamily = 'Poppins, sans-serif';
-    previewButton.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
-    previewButton.style.transition = 'all 0.3s ease';
-
-    previewButton.addEventListener('mouseenter', () => {
-        previewButton.style.backgroundColor = '#a68ad6';
-        previewButton.style.transform = 'translateY(-2px)';
-    });
-
-    previewButton.addEventListener('mouseleave', () => {
-        previewButton.style.backgroundColor = '#8a65cc';
-        previewButton.style.transform = 'translateY(0)';
-    });
-
-    previewButton.addEventListener('click', () => {
-        // Remove countdown and show birthday content
-        countdownContainer.remove();
-        document.querySelector('.container').style.visibility = 'visible';
-
-        // Initialize music button
-        initMusicButton(false);
-
-        // Start the birthday animation
-        animationTimeline();
-
-        // Create birthday effects
-        createConfetti();
-    });
-
-    // Add confetti container to countdown
-    const confettiCountdown = document.createElement('div');
-    confettiCountdown.id = 'confetti-countdown';
-    confettiCountdown.style.position = 'absolute';
-    confettiCountdown.style.top = '0';
-    confettiCountdown.style.left = '0';
-    confettiCountdown.style.width = '100%';
-    confettiCountdown.style.height = '100%';
-    confettiCountdown.style.pointerEvents = 'none';
-    confettiCountdown.style.zIndex = '-1';
-
-    // Assemble the countdown container
-    countdownContainer.appendChild(heading);
-    countdownContainer.appendChild(timerContainer);
-    countdownContainer.appendChild(message);
-    countdownContainer.appendChild(previewButton);
-    countdownContainer.appendChild(confettiCountdown);
-    document.body.appendChild(countdownContainer);
-
-    // Update countdown timer
-    function updateCountdown() {
-        const currentTime = new Date().getTime();
-        const timeRemaining = unlockDate - currentTime;
-
-        if (timeRemaining <= 0) {
-            // It's time! Remove countdown and show birthday content
-            countdownContainer.remove();
-            document.querySelector('.container').style.visibility = 'visible';
-
-            // Initialize music button
-            initMusicButton(true);
-
-            // Start the birthday animation
-            animationTimeline();
-
-            // Create birthday effects
-            createConfetti();
-
-            // Clear interval
-            clearInterval(countdownInterval);
-            return;
-        }
-
-        // Calculate time units
-        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-
-        // Update DOM
-        timeElements.days.textContent = days.toString().padStart(2, '0');
-        timeElements.hours.textContent = hours.toString().padStart(2, '0');
-
-        timeElements.minutes.textContent = minutes.toString().padStart(2, '0');
-        timeElements.seconds.textContent = seconds.toString().padStart(2, '0');
-    }
-
-    // Initial update
-    updateCountdown();
-
-    // Update every second
-    const countdownInterval = setInterval(updateCountdown, 1000);
-}
-
 // Function to handle music toggle
 function initMusicButton(autoplay = false) {
     const musicBtn = document.getElementById('music-toggle');
     const song = document.querySelector('.song');
 
     // Set initial state
-    let isPlaying = autoplay;
+    let isPlaying = false;
 
     // Make song element visible
     song.style.visibility = 'visible';
 
-    if (autoplay) {
-        song.play();
-        musicBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
-    } else {
-        musicBtn.innerHTML = '<i class="fas fa-volume-xmark"></i>';
-    }
-
-    // Add click event
+    // Set up click event first
     musicBtn.addEventListener('click', function () {
         if (isPlaying) {
             song.pause();
             musicBtn.innerHTML = '<i class="fas fa-volume-xmark"></i>';
             isPlaying = false;
         } else {
-            song.play();
-            musicBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
-            isPlaying = true;
+            // When user clicks, try to play and handle any potential promise
+            const playPromise = song.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    musicBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                    isPlaying = true;
+                }).catch(error => {
+                    console.error("Play failed:", error);
+                    // Show failure icon
+                    musicBtn.innerHTML = '<i class="fas fa-volume-xmark"></i>';
+                });
+            }
         }
     });
-}
 
+    // Try to autoplay after everything is set up
+    if (autoplay) {
+        const playPromise = song.play();
+
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                musicBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                isPlaying = true;
+            }).catch(error => {
+                console.error("Autoplay failed:", error);
+                // Modern browsers require user interaction before autoplay
+                musicBtn.innerHTML = '<i class="fas fa-volume-xmark"></i>';
+            });
+        }
+    } else {
+        musicBtn.innerHTML = '<i class="fas fa-volume-xmark"></i>';
+    }
+}
 
 // Main animation timeline
 function animationTimeline() {
@@ -561,25 +434,14 @@ function animationTimeline() {
 }
 
 
-
 // DOM ready event
 document.addEventListener('DOMContentLoaded', function () {
-    // Create the gift box with a slight delay for better user experience
-    setTimeout(createGiftBox, 500);
-
-    // Initialize the gift box automatically
-    initGiftBox();
-
+    // First, make the container visible
     document.querySelector('.container').style.visibility = 'visible';
 
     // Initialize music button with autoplay
     initMusicButton(true);
 
-    // Start the birthday animation
-    animationTimeline();
-
-    // Create birthday effects
-    createConfetti();
-
-
+    // Only create the gift box initially
+    createGiftBox();
 });
