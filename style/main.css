@@ -1,0 +1,465 @@
+:root {
+  --primary-color: #a68ad6;
+  --secondary-color: #8a65cc;
+  --accent-color: #ff69b4;
+  --text-color: #333;
+  --light-text: #666;
+  --background: #f3eefb;
+  --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background);
+  color: var(--text-color);
+  overflow: hidden;
+}
+
+.song {
+  visibility: hidden;
+}
+
+/* Music Toggle Button */
+.music-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  box-shadow: var(--box-shadow);
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.music-toggle:hover {
+  transform: scale(1.1);
+  background-color: var(--secondary-color);
+}
+
+.music-toggle i {
+  font-size: 1.2rem;
+}
+
+.container {
+  height: 100vh;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  visibility: hidden;
+  width: 100vw;
+}
+
+.container > div {
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 20vh;
+}
+
+.one {
+  font-size: 4.5rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+
+.two {
+  font-size: 1.4rem;
+  font-weight: lighter;
+}
+
+.three {
+  font-size: 3rem;
+  color: var(--accent-color);
+}
+.four .text-box {
+  border: 3px solid var(--primary-color);
+  border-radius: 15px;
+  margin: 0 auto;
+  position: relative;
+  width: 600px;
+  max-width: 90%;
+  background-color: white;
+  box-shadow: var(--box-shadow);
+}
+
+.text-box p {
+  margin: 0;
+  padding: 10px;
+  text-align: left;
+  line-height: 1.6;
+}
+
+.text-box span {
+  visibility: hidden;
+}
+
+/* Changed class name from .fake-btn to .send-btn to match your HTML */
+.text-box .send-btn {
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 30px;
+  bottom: -25px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  padding: 10px 25px;
+  position: absolute;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: var(--box-shadow);
+}
+
+.text-box .send-btn i {
+  font-size: 0.9rem;
+}
+.five p {
+  font-size: 2rem;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+.idea-3 strong {
+  border-radius: 8px;
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.five .idea-5 {
+  font-size: 4rem;
+  color: var(--accent-color);
+}
+
+.idea-5 span, .idea-6 span, .wish-hbd span {
+  display: inline-block;
+}
+
+.idea-6 span {
+  font-size: 15rem;
+  color: var(--secondary-color);
+}
+
+.six {
+  position: relative;
+  top: 10vh;
+  z-index: 1;
+}
+
+.profile-picture-container {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.six img.profile-picture {
+  display: inline-block;
+  height: 300px;
+  width: 300px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid white;
+  box-shadow: var(--box-shadow);
+}
+
+.six .hat {
+  left: 41.5%;
+  position: absolute;
+  top: -35%;
+  width: 80px;
+}
+
+.baloons img {
+  display: inline-block;
+  position: absolute;
+}
+
+.baloons img:nth-child(even) {
+  left: -10%;
+}
+
+.baloons img:nth-child(odd) {
+  right: -10%;
+}
+
+.baloons img:nth-child(3n + 0) {
+  left: 30%;
+}
+
+.seven, .eight {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+}
+
+.eight svg {
+  left: 0;
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  width: 25px;
+  z-index: -1;
+}
+
+.eight svg:nth-child(1) {
+  fill: #bd6ecf;
+  left: 5vw;
+  top: 7vh;
+}
+
+.eight svg:nth-child(2) {
+  fill: #7dd175;
+  left: 35vw;
+  top: 23vh;
+}
+
+.eight svg:nth-child(3) {
+  fill: #349d8b;
+  left: 23vw;
+  top: 33vh;
+}
+
+.eight svg:nth-child(4) {
+  fill: #347a9d;
+  left: 57vw;
+  top: 43vh;
+}
+
+.eight svg:nth-child(5) {
+  fill: #c66053;
+  left: 7vw;
+  top: 68vh;
+}
+
+.eight svg:nth-child(6) {
+  fill: #bfaa40;
+  left: 77vw;
+  top: 42vh;
+}
+
+.eight svg:nth-child(7) {
+  fill: #e3bae8;
+  left: 83vw;
+  top: 68vh;
+}
+
+.eight svg:nth-child(8) {
+  fill: #8762cb;
+  left: 37vw;
+  top: 86vh;
+}
+
+.eight svg:nth-child(9) {
+  fill: #9a90da;
+  left: 87vw;
+  top: 94vh;
+}
+
+.wish-hbd {
+  font-size: 3em;
+  margin: 0;
+  text-transform: uppercase;
+  color: var(--secondary-color);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.wish h5 {
+  font-size: 2rem;
+  font-weight: normal;
+  margin: 10px 0 0;
+  color: var(--text-color);
+}
+
+.nine p {
+  font-size: 2rem;
+  font-weight: lighter;
+}
+
+.replay-btn {
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 10px 25px;
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: var(--box-shadow);
+}
+
+.replay-btn:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+/* Countdown styling */
+#countdown-container {
+  background: var(--background) !important;
+  background-image: linear-gradient(45deg, rgba(166, 138, 214, 0.2) 25%, transparent 25%, transparent 50%, rgba(166, 138, 214, 0.2) 50%, rgba(166, 138, 214, 0.2) 75%, transparent 75%, transparent) !important;
+  background-size: 40px 40px !important;
+  animation: stripe-animation 2s linear infinite !important;
+}
+
+@keyframes stripe-animation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
+}
+
+#countdown-container h1 {
+  color: var(--secondary-color) !important;
+  font-size: 3rem !important;
+  margin-bottom: 30px !important;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+#countdown-container .timer-unit {
+  background-color: white !important;
+  padding: 20px !important;
+  border-radius: 10px !important;
+  box-shadow: var(--box-shadow) !important;
+  min-width: 100px !important;
+}
+
+#countdown-container .number {
+  color: var(--secondary-color) !important;
+  font-weight: 600 !important;
+}
+
+#countdown-container p {
+  font-size: 1.2rem !important;
+  margin-top: 20px !important;
+  background-color: white !important;
+  padding: 15px 30px !important;
+  border-radius: 30px !important;
+  box-shadow: var(--box-shadow) !important;
+  display: inline-block !important;
+}
+
+/* Heart animation */
+@keyframes floating {
+  0% {
+    transform: translateY(0) rotate(45deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(45deg);
+  }
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+}
+
+/* Responsive Media Queries */
+@media screen and (max-width: 768px) {
+  .one {
+    font-size: 3rem;
+  }
+  
+  .three {
+    font-size: 2rem;
+  }
+  
+  .idea-5 {
+    font-size: 3rem !important;
+  }
+  
+  .idea-6 span {
+    font-size: 8rem;
+  }
+  
+  .six img.profile-picture {
+    height: 200px;
+    width: 200px;
+  }
+  
+  .wish-hbd {
+    font-size: 2.2rem;
+  }
+  
+  .wish h5 {
+    font-size: 1.4rem;
+  }
+  
+  .nine p {
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container > div {
+    top: 15vh;
+  }
+  
+  .one {
+    font-size: 2.5rem;
+  }
+  
+  .two {
+    font-size: 1.2rem;
+  }
+  
+  .three {
+    font-size: 1.8rem;
+  }
+  
+  .idea-3 strong {
+    display: inline;
+  }
+  
+  .idea-5 span {
+    display: block;
+  }
+  
+  .idea-6 span {
+    font-size: 5rem;
+  }
+  
+  .six img.profile-picture {
+    height: 180px;
+    width: 180px;
+  }
+  
+  .six .hat {
+    left: 37%;
+    top: -30%;
+    width: 60px;
+  }
+  
+  .wish-hbd {
+    font-size: 1.8rem;
+  }
+  
+  .wish h5 {
+    font-size: 1.2rem;
+  }
+  
+  .nine p {
+    font-size: 1.2rem;
+  }
+}
