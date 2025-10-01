@@ -29,4 +29,4 @@ If you have any ideas to make it more interesting, please submit a pull request 
 
 ### [MIT](LICENSE)
 
-> Github [@fajarghifar](https://github.com/hasan-zahid-code/) &nbsp;&middot;&nbsp;
+> Github [@hasan-zahid-code](https://github.com/hasan-zahid-code/) &nbsp;&middot;&nbsp;
